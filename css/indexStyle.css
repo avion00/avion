@@ -159,6 +159,7 @@ button:hover {
 
 .toggle .line1 {
   transform: rotate(-45deg) translate(-5px, 6px);
+
 }
 .toggle .line2 {
   opacity: 0;
@@ -262,6 +263,7 @@ span {
 @media screen and (max-width: 800px) {
   .info a {
     font-size: 12px;
+    margin-bottom: 5%;
   }
 
   .info h1 {
