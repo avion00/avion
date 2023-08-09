@@ -67,29 +67,39 @@ button {
 }
 
 .nav_list li a {
-  transition: all 0.3s ease 0;
+  transform: scale(1);
+  transition: transform 1s;
+  transform-origin: left top;
 }
 
 .nav_list li a:hover {
   color: var(--hover-color);
   font-size: 14px;
-  transform: all 0.5s ease 0;
+  transform: scale(2);
 }
 
-button {
+.header button {
   padding: 6px 20px;
-  background-color: var(--button-color);
-  color: var(--secondary-color);
+
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.5s ease 0;
   display: flex;
+  animation: btnHover 1s infinite alternate;
+}
+.header button:hover{
+  animation-play-state: paused;
 }
 
-button:hover {
-  background-color: var(--hover-color);
-  color: var(--primary-color);
+@keyframes btnHover {
+  0%{
+      background-color: var(--button-color);
+      color: var(--secondary-color);
+  }
+  100%{
+      background-color: var(--hover-color);
+      color: var(--primary-color);
+  }
 }
 
 .menu {
