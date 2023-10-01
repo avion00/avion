@@ -24,32 +24,54 @@ const navSlide = () => {
 };
 navSlide();
 
-// dark to light mode or vice versa
-var icon = document.getElementById("icon");
-// var logo = document.getElementById('logo');
 
-if (localStorage.getItem("theme") == null) {
-  localStorage.getItem("theme", "light");
-}
+// toggle mode(dark-light) with icon end
 
-let localData = localStorage.getItem("theme");
+const modeToggleBtn = document.getElementById("icon");
 
-if ((localData = "light")) {
-  icon.src = "image/moon.png";
-  document.body.classList.remove("dark_theme");
-} else if ((localData = "dark")) {
-  icon.src = "image/sun.png";
-  document.body.classList.add("dark_theme");
-}
+// Function to toggle between light and dark mode
+function toggleMode() {
+  const body = document.body;
 
-icon.onclick = function () {
-  document.body.classList.toggle("dark_theme");
-
-  if (document.body.classList.contains("dark_theme")) {
-    icon.src = "image/sun.png";
-    localStorage.setItem("theme", "dark");
+  if (body.classList.contains("dark-mode")) {
+    body.classList.remove("dark-mode");
+    modeToggleBtn.src = "image/moon.png";
+    body.classList.add("light-mode");
+    localStorage.setItem("mode", "light");
   } else {
-    icon.src = "image/moon.png";
-    localStorage.setItem("theme", "light");
+    body.classList.remove("light-mode");
+    body.classList.add("dark-mode");
+    modeToggleBtn.src = "image/sun.png";
+    localStorage.setItem("mode", "dark");
   }
-};
+}
+
+// Add event listener for the mode toggle button
+modeToggleBtn.addEventListener("click", toggleMode);
+
+// Check for system's color scheme preference and apply it
+function applySystemColorScheme() {
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    document.body.classList.add("dark-mode");
+    modeToggleBtn.src = "image/sun.png";
+  } else {
+    document.body.classList.remove("dark-mode");
+    modeToggleBtn.src = "image/moon.png";
+  }
+}
+
+// Initially apply the system's color scheme
+applySystemColorScheme();
+
+// Remove the mode preference from local storage
+function clearLocalStorageMode() {
+  localStorage.removeItem("mode");
+}
+
+// Add an event listener for page unload to clear the local storage mode
+window.addEventListener("beforeunload", clearLocalStorageMode);
+
+// toggle mode(dark-light) with icon end
