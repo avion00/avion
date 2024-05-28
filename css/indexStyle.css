@@ -258,7 +258,7 @@ span {
 }
 
 .main-img {
-  max-width: 36%;
+  max-width: 35%;
   position: absolute;
   right: 8%;
   top: 15%;
@@ -282,7 +282,7 @@ span {
   }
 
   .info h1 {
-    font-size: 28px;
+    font-size: 25px;
   }
 
   .info h1 span {
