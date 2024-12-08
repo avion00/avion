@@ -1,1 +1,2 @@
+we get the error handling to the requirect area
 fetch the mongo 
